@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Review Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Review Classifier</h1>
+        <textarea id="reviewInput" placeholder="Enter your movie review here..."></textarea>
+        <button onclick="classifyReview()">Classify Review</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        async function classifyReview() {
+            // Get the review text from the input box
+            const review = document.getElementById('reviewInput').value;
+    
+            // If the input is empty, show a message and stop
+            if (!review.trim()) {
+                document.getElementById('result').innerText = "Please enter a review.";
+                return;
+            }
+    
+            // Send the review to the server for classification
+            try {
+                const response = await fetch('/classify', {
+                    method: 'POST', // Send data using POST
+                    headers: { 'Content-Type': 'application/json' }, // Specify JSON format
+                    body: JSON.stringify({ review }) // Convert review to JSON
+                });
+    
+                // Get the response data
+                const result = await response.json();
+    
+                // Display the result or error message
+                if (response.ok) {
+                    document.getElementById('result').innerText = `Review is classified as: ${result.classification}`;
+                } else {
+                    document.getElementById('result').innerText = `Error: ${result.error}`;
+                }
+            } catch (error) {
+                // Handle any network or unexpected errors
+                document.getElementById('result').innerText = "An error occurred. Please try again.";
+            }
+        }
+    </script>
+    
+    
+</body>
+</html>
