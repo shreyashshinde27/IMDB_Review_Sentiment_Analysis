@@ -57,13 +57,13 @@ project/
 
 ## Usage
 1. Launch the Flask application using the above steps.
-2. Access the web interface through `http://127.0.0.1:5000/`.
-3. Upload a text file containing IMDb reviews or enter text manually.
+2. Access the web interface through `http://127.0.0.1:5000/` OR Localhost.
+3. Upload a text containing IMDb reviews or enter text manually.
 4. View the sentiment analysis results instantly.
 
 ## Model Details
 - **Algorithm**: Logistic Regression
-- **Libraries Used**: scikit-learn, pandas, numpy, Flask
+- **Libraries Used**: numpy, pandas, re, nltk, scikit-learn, Flask 
 - **Model Persistence**: Models are saved using joblib for efficient loading.
 
 ## Future Enhancements
