@@ -1,4 +1,4 @@
-# AI IMDb Review Analysis
+# IMDB Review Sentiment Analysis
 
 ## Project Description
 The AI IMDb Review Analysis project is a machine learning application that performs sentiment analysis on IMDb movie reviews. This project leverages natural language processing (NLP) techniques to classify reviews as positive or negative. It includes a user-friendly web interface built with Flask, enabling users to upload reviews and see real-time sentiment predictions.
